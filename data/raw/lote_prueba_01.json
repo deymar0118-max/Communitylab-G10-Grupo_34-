@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.1",
+  "request_id": "req-prueba-001",
+  "origen_comunidad": "NoCountry_G10_Test",
+  "periodo_referencia": "2026-W38",
+  "interacciones": [
+    {
+      "id": "msg_001",
+      "autor": "Usuario_Alfa",
+      "canal": "Discord",
+      "tipo": "Testimonio",
+      "texto": "¡Logré desplegar mi primera base de datos en OCI tras dos días intentándolo! Gracias a las guías de la comunidad.",
+      "metadata_origen": {
+        "plataforma": "Discord",
+        "identificador_original": "123456789",
+        "fecha": "2026-09-18T10:00:00Z"
+      }
+    },
+    {
+      "id": "msg_002",
+      "autor": "Usuario_Beta",
+      "canal": "Slack",
+      "tipo": "Avance",
+      "texto": "Completamos los esquemas Pydantic del proyecto. Todo el equipo ya sincronizó el repositorio local.",
+      "metadata_origen": {
+        "plataforma": "Slack",
+        "identificador_original": "987654321",
+        "fecha": "2026-09-18T10:15:00Z"
+      }
+    },
+    {
+      "id": "msg_003",
+      "autor": "Usuario_Gamma",
+      "canal": "Discord",
+      "tipo": "Duda",
+      "texto": "Tengo problemas para configurar el webhook de n8n con la API local, ¿alguien sabe qué puerto se debe exponer?",
+      "metadata_origen": {
+        "plataforma": "Discord",
+        "identificador_original": "456789123",
+        "fecha": "2026-09-18T10:30:00Z"
+      }
+    },
+    {
+      "id": "msg_004",
+      "autor": "Usuario_Delta",
+      "canal": "Discord",
+      "tipo": "SinTexto",
+      "texto": "",
+      "metadata_origen": {
+        "plataforma": "Discord",
+        "identificador_original": "000000000",
+        "fecha": "2026-09-18T10:35:00Z"
+      }
+    }
+  ]
+}
