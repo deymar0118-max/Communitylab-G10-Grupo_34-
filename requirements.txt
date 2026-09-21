@@ -1,5 +1,8 @@
 streamlit==1.38.0
 pydantic==2.8.2
+fastapi>=0.112.0
+uvicorn>=0.30.0
+pytest>=8.0.0
 google-generativeai>=0.8.0
 openai==1.42.0
 oci==2.129.0
