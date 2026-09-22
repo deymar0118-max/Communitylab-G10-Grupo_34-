@@ -6,6 +6,7 @@ Solución automatizada orientada a comunidades de aprendizaje, ecosistemas de de
 ---
 
 ## 🏗️ Arquitectura y Recorrido de Integración
+<img width="1024" height="768" alt="White Minimalist Modern Recruitment Process Flowchart" src="https://github.com/user-attachments/assets/542a6504-f1e6-400a-a1a6-ed450d3602e7" />
 
 ```
 [n8n / Webhook / Carga Manual]
