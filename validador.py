@@ -1,34 +1,41 @@
 """
 Módulo de Validación Local de Andrea (Data Engineering).
 Aplica la validación en dos capas:
-1. Ingestión del sobre crudo con IngestionPayload.
-2. Validación registro por registro con ValidatedInteractionItem.
+1. Ingestión del sobre crudo con IngestionLote.
+2. Validación registro por registro con InteraccionValidada.
 3. Aislamiento de registros inválidos en auditoría sin tumbar el lote.
 """
 
 from typing import Dict, List, Tuple
-from esquemas import IngestionPayload, RawInteractionItem, ValidatedInteractionItem
+from esquemas import IngestionLote, InteraccionValidada, MetadataOrigenValidado
 
 
-def validar_lote_crudo(payload: IngestionPayload) -> Tuple[List[ValidatedInteractionItem], List[Dict]]:
+def validar_lote_crudo(payload: IngestionLote) -> Tuple[List[InteraccionValidada], List[Dict]]:
     """
-    Recibe un IngestionPayload, valida cada interacción y separa:
-    - validos: List[ValidatedInteractionItem] (pasan a los agentes de IA)
+    Recibe un IngestionLote, valida cada interacción y separa:
+    - validos: List[InteraccionValidada] (pasan a los agentes de IA)
     - rechazados: List[Dict] (aislados en auditoría con su motivo de fallo)
     """
-    validos: List[ValidatedInteractionItem] = []
+    validos: List[InteraccionValidada] = []
     rechazados: List[Dict] = []
 
     for raw_item in payload.interacciones:
         try:
+            # Validar y parsear metadatos (fecha str -> datetime)
+            meta_validada = MetadataOrigenValidado(
+                plataforma=raw_item.metadata_origen.plataforma,
+                identificador_original=raw_item.metadata_origen.identificador_original,
+                fecha=raw_item.metadata_origen.fecha,
+            )
+
             # Validar con el esquema estricto (exige texto no vacío)
-            validated = ValidatedInteractionItem(
+            validated = InteraccionValidada(
                 id=raw_item.id,
                 autor=raw_item.autor,
                 canal=raw_item.canal,
                 tipo=raw_item.tipo,
                 texto=raw_item.texto or "",
-                metadata_origen=raw_item.metadata_origen,
+                metadata_origen=meta_validada,
             )
             validos.append(validated)
         except Exception as e:
